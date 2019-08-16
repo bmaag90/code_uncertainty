@@ -1,0 +1,14 @@
+{
+    "number_of_samples": 2000,
+    "random_seed": 42,
+    "nn_sizes": [1, [32],[32],1],
+    "ensemble_size": 20,
+    "learning_rate": 0.01,
+    "beta_pred": 1e-6,
+    "beta_unc": 5e-3,
+    "epochs":  1000,
+    "batch_size": 0.05,
+    "learning_decay": 0.99,
+    "max_stop_cnt": 3,
+    "update_step": 5
+}
