@@ -84,7 +84,7 @@ class ModelTrainer(object):
         last_avg_train_cost = float("inf")
         for itr in range(epochs):
             np.random.shuffle(batch_index)
-            avg_cost = 0.0
+            avg_train_cost = 0.0
             avg_test_cost = 0.0
             for cb in range(batch_runs):
                 for b in range(self.ensemble_size):  
@@ -96,7 +96,7 @@ class ModelTrainer(object):
                     cury = BT_y_train[b][indices]      
                     feed = {self.model.input_data: curX, self.model.target_pred: cury}
                     _,c = self.sess.run([self.model.optimizer_pred[b],self.model.cost_pred[b]],feed_dict=feed)
-                    avg_cost += c / batch_runs
+                    avg_train_cost += c / batch_runs
 
             if itr % update_step == 0:                
                 for b in range(self.ensemble_size):
@@ -106,8 +106,8 @@ class ModelTrainer(object):
                     early_stopping_counter += 1
                 else:
                     early_stopping_counter = 0
-                avg_train_cost_dec = (last_avg_train_cost - avg_cost)/last_avg_train_cost
-                last_avg_train_cost = avg_cost 
+            
+                last_avg_train_cost = avg_train_cost 
                 last_avg_test_cost = avg_test_cost
                 if learning_decay > 0: 
                         self.sess.run(tf.assign(self.model.lr,self.model.lr*learning_decay))                
@@ -117,7 +117,7 @@ class ModelTrainer(object):
                         batch_size = len(self.X_train)
                     print 'New batch size: ',batch_size,' // Perc. of dataset: ', 100*batch_size/len(self.X_train)
                     batch_runs = int(len(self.X_train)/batch_size)
-                print 'Iteration:', itr, avg_cost,  avg_test_cost, early_stopping_counter
+                print 'Iteration:', itr, avg_train_cost,  avg_test_cost, early_stopping_counter
             if early_stopping_counter >= max_stop_cnt:
                 print 'Test error in Phase 1 not decreasing anymore... early stopping!'
                 break
@@ -130,7 +130,7 @@ class ModelTrainer(object):
         batch_size = init_batch_size
         for itr in range(epochs):
             np.random.shuffle(batch_index)
-            avg_cost = 0.0
+            avg_train_cost = 0.0
             avg_test_cost = 0.0
             for cb in range(batch_runs):
                 for b in range(self.ensemble_size):  
@@ -142,7 +142,7 @@ class ModelTrainer(object):
                     cury = BT_y_train[self.ensemble_size+b][indices]      
                     feed = {self.model.input_data: curX, self.model.target_unc: cury}
                     _,c = self.sess.run([self.model.optimizer_unc[b],self.model.cost_unc[b]],feed_dict=feed)
-                    avg_cost += c / batch_runs
+                    avg_train_cost += c / batch_runs
 
             if itr % update_step == 0:        
                 for b in range(self.ensemble_size):
@@ -152,8 +152,8 @@ class ModelTrainer(object):
                     early_stopping_counter += 1
                 else:
                     early_stopping_counter = 0
-                avg_train_cost_dec = (last_avg_train_cost - avg_cost)/last_avg_train_cost
-                last_avg_train_cost = avg_cost 
+                
+                last_avg_train_cost = avg_train_cost 
                 last_avg_test_cost = avg_test_cost
                 if learning_decay > 0: 
                         self.sess.run(tf.assign(self.model.lr,self.model.lr*learning_decay))                
@@ -163,7 +163,7 @@ class ModelTrainer(object):
                         batch_size = len(self.X_train)
                     print 'New batch size: ',batch_size,' // Perc. of dataset: ', 100*batch_size/len(self.X_train)
                     batch_runs = int(len(self.X_train)/batch_size)
-                print 'Iteration:', itr, avg_cost,  avg_test_cost, early_stopping_counter
+                print 'Iteration:', itr, avg_train_cost,  avg_test_cost, early_stopping_counter
             if early_stopping_counter >= max_stop_cnt:
                 print 'Test error in Phase 2 not decreasing anymore... early stopping!'
                 break

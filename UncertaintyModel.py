@@ -9,7 +9,7 @@ class UncertaintyModel():
     and one to calculate the first type of uncertainty, i.e. the aleatoric UNCERTAINTY
     Both paths are built as ensembles, where there are one or multiple shared hidden layers and multiple outputs which are trained individually. 
     The individual training can be done via bootstrapping, i.e. each output is trained with a bootstrapped dataset. 
-    The hidden layers are shared to optimize training and memory requirements.
+    The hidden layers are shared to optimize training and memory requirements. [See also: Osband et al. Deep exploration via bootstrapped DQN, NIPS 2016]
 
     The model needs following parameters:
     nn_sizes: The size of the model, i.e. the neural network, it needs to be of form [#Inputs, [Size_Prediction_Path], [Size_Uncertainty_Path], #Outputs_Per_Path] e.g.: [3, [16, 8], [8, 4], 1]
