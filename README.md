@@ -18,7 +18,7 @@ In order to save memory and minimize training efforts we use the network structu
 
 More information about our model can be found in our paper. Further information about:
 1. Bootstrapping: *Efron and Tibshirani. An introduction to the bootstrap. 1994* 
-1. Aleatoric uncertainty estimation: *Nix et al. Learning local error bars for nonlinear regression. NIPS95*
+1. Aleatoric uncertainty estimation: *Nix and Weigend. Learning local error bars for nonlinear regression. NIPS95*
 
 ## Code Structure
 Following files are provided:
