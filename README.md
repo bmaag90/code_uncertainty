@@ -1,5 +1,5 @@
 # Code for "Enhancing Multi-Hop Sensor Calibration with Uncertainty Estimates"
-This repository provides a simple framework to showcase the model presented in "Enhancing Multi-Hop Sensor Calibration with Uncertainty Estimates" that performs typical regression task while also providing epistemic and aleatoric uncertainty metrics.
+This repository provides a simple framework to showcase the model presented in "Enhancing Multi-Hop Sensor Calibration with Uncertainty Estimates" (see [https://doi.org/10.3929/ethz-b-000352546](https://doi.org/10.3929/ethz-b-000352546)) that performs typical regression task while also providing epistemic and aleatoric uncertainty metrics.
 The model is tested on artificially generated data, i.e. we sample a non-linear function with samples that are affected by input-dependent noise.
 
 ## How does the model work?
@@ -16,7 +16,7 @@ This allows us to calculate:
 
 In order to save memory and minimize training efforts we use the network structure described in *Osband et al. Deep exploration via bootstrapped DQN. NIPS 2016*, i.e. we use shared hidden layers and multiple outputs that are trained individually by the bootstrapped datasets to create an ensemble.
 
-More information about our model can be found in our paper. Further information about:
+More information about our model can be found in our [paper](https://doi.org/10.3929/ethz-b-000352546). Further information about:
 1. Bootstrapping: *Efron and Tibshirani. An introduction to the bootstrap. 1994* 
 1. Aleatoric uncertainty estimation: *Nix and Weigend. Learning local error bars for nonlinear regression. NIPS95*
 
