@@ -1,5 +1,5 @@
 # Code for "Enhancing Multi-Hop Sensor Calibration with Uncertainty Estimates"
-This repository provides a simple framework to showcase the model presented in "Enhancing Multi-Hop Sensor Calibration with Uncertainty Estimates" (see [https://doi.org/10.3929/ethz-b-000352546](https://doi.org/10.3929/ethz-b-000352546)) that performs typical regression task while also providing epistemic and aleatoric uncertainty metrics.
+This repository provides a simple framework to showcase the model presented in "Enhancing Multi-Hop Sensor Calibration with Uncertainty Estimates" (see [https://doi.org/10.3929/ethz-b-000352546](https://doi.org/10.3929/ethz-b-000352546)) that performs typical regression tasks while also providing epistemic and aleatoric uncertainty metrics.
 The model is tested on artificially generated data, i.e. we sample a non-linear function with samples that are affected by input-dependent noise.
 
 ## How does the model work?
