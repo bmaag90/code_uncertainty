@@ -22,7 +22,7 @@ More information about our model can be found in our [paper](https://doi.org/10.
 
 ## Code Structure
 Following files are provided:
-1. `RunExperiment.py`: Main script to perform an experiment, takes care of generating data, training the model and plotting the results. Run `python MultihopCalibration.py --config_file=config.json` to start a new experiment
+1. `RunExperiment.py`: Main script to perform an experiment, takes care of generating data, training the model and plotting the results. Run `python RunExperiment.py --config_file=config.json` to start a new experiment
 1. `UncertaintyModel.py`: Tensorflow model
 1. `DataCreator.py`: Creates the random data which is used to train the model
 1. `ModelTrainer.py`: Framework to train the tensorflow model using different strategies such as learning-rate-decay or batch-size-increasing
